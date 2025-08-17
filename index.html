@@ -41,7 +41,6 @@
 </head>
 <body>
   <h1>aktuelles AllSkEye Bild</h1>
-  <div id="datetime">Lade Zeitstempel…</div>
   <img id="image0" src="https://hblapa.github.io/myallskeye/LatestImage.jpg" alt="Bitte warten…" />
 
   <script>
@@ -53,14 +52,7 @@
       const im = document.getElementById('image0');
       LoadAndSetNewImageIfFound(im, imageUrl);
 
-      try {
-        const response = await fetch(baseUrl + "latest.txt");
-        const timestamp = await response.text();
-        document.getElementById("datetime").textContent = `Bild erstellt am: ${timestamp.trim()}`;
-      } catch (error) {
-        document.getElementById("datetime").textContent = "Zeitstempel nicht verfügbar";
-      }
-
+    
       setTimeout(Refresh, interval);
     }
 
